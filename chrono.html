@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debate Chronometer | All-Star Debate</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chrono.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header component will be loaded here -->
+    <div id="header-container"></div>
+
+    <main class="chrono-main">
+        <div class="chrono-container">
+            <div class="chrono-header">
+                <h1>Debate Chronometer</h1>
+                <p>Time and manage debate interventions</p>
+            </div>
+
+            <div class="chrono-body">
+                <!-- Team Selection -->
+                <div class="team-selection">
+                    <h2>Current Speaker</h2>
+                    <div class="team-buttons">
+                        <button class="team-btn" data-team="gov">
+                            <i class="fas fa-gavel"></i>
+                            Government
+                        </button>
+                        <button class="team-btn" data-team="opp">
+                            <i class="fas fa-balance-scale"></i>
+                            Opposition
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Current Intervention Info -->
+                <div class="intervention-info">
+                    <div class="info-item">
+                        <span class="info-label">Current Team:</span>
+                        <span id="current-team" class="info-value">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Speaker:</span>
+                        <span id="current-intervention" class="info-value">-</span>
+                    </div>
+                </div>
+
+                <!-- Speaking Order Guide -->
+                <div class="speaking-order">
+                    <h3>Speaking Order</h3>
+                    <div class="order-list">
+                        <div class="order-item" data-position="1">
+                            <span class="position">1</span>
+                            <span class="team-name">Gov 1st</span>
+                            <span class="time">8 min</span>
+                        </div>
+                        <div class="order-item" data-position="2">
+                            <span class="position">2</span>
+                            <span class="team-name">Opp 1st</span>
+                            <span class="time">8 min</span>
+                        </div>
+                        <div class="order-item" data-position="3">
+                            <span class="position">3</span>
+                            <span class="team-name">Gov 2nd</span>
+                            <span class="time">8 min</span>
+                        </div>
+                        <div class="order-item" data-position="4">
+                            <span class="position">4</span>
+                            <span class="team-name">Opp 2nd</span>
+                            <span class="time">8 min</span>
+                        </div>
+                        <div class="order-item" data-position="5">
+                            <span class="position">5</span>
+                            <span class="team-name">Opp Reply</span>
+                            <span class="time">4 min</span>
+                        </div>
+                        <div class="order-item" data-position="6">
+                            <span class="position">6</span>
+                            <span class="team-name">Gov Reply</span>
+                            <span class="time">4 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timer Display -->
+                <div class="timer-section">
+                    <div class="timer-container">
+                        <div class="timer-display">08:00</div>
+                        <div class="progress-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timer Controls -->
+                <div class="control-section">
+                    <div class="control-buttons">
+                        <button id="start-btn" class="control-btn start-btn" disabled>
+                            <i class="fas fa-play"></i>
+                            Start
+                        </button>
+                        <button id="pause-btn" class="control-btn pause-btn" disabled>
+                            <i class="fas fa-pause"></i>
+                            Pause
+                        </button>
+                        <button id="reset-btn" class="control-btn reset-btn" disabled>
+                            <i class="fas fa-redo"></i>
+                            Reset
+                        </button>
+                        <button id="next-btn" class="control-btn next-btn">
+                            <i class="fas fa-step-forward"></i>
+                            Next Speaker
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="settings-section">
+                    <h2>Settings</h2>
+                    
+                    <div class="settings-group">
+                        <h3>Time Settings</h3>
+                        <div class="setting-item">
+                            <label for="regular-time">Main Speech Time:</label>
+                            <input type="text" id="regular-time" placeholder="08:00" value="08:00">
+                        </div>
+                        <div class="setting-item">
+                            <label for="final-time">Reply Speech Time:</label>
+                            <input type="text" id="final-time" placeholder="04:00" value="04:00">
+                        </div>
+                        <div class="setting-item">
+                            <label for="warning-time">Warning Time:</label>
+                            <input type="text" id="warning-time" placeholder="01:00" value="01:00">
+                        </div>
+                        <div class="setting-item">
+                            <label for="critical-time">Critical Time:</label>
+                            <input type="text" id="critical-time" placeholder="00:15" value="00:15">
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Sound Settings</h3>
+                        <div class="setting-item checkbox">
+                            <input type="checkbox" id="sound-enabled" checked>
+                            <label for="sound-enabled">Enable Sounds</label>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <input type="checkbox" id="warning-sound" checked>
+                            <label for="warning-sound">Warning Sound</label>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <input type="checkbox" id="critical-sound" checked>
+                            <label for="critical-sound">Critical Sound</label>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <input type="checkbox" id="expired-sound" checked>
+                            <label for="expired-sound">Expired Sound</label>
+                        </div>
+                    </div>
+
+                    <div class="keyboard-shortcuts">
+                        <h3>Keyboard Shortcuts</h3>
+                        <ul>
+                            <li><span class="key">Space</span> - Start/Pause</li>
+                            <li><span class="key">R</span> - Reset</li>
+                            <li><span class="key">N</span> - Next Speaker</li>
+                            <li><span class="key">G</span> - Government</li>
+                            <li><span class="key">O</span> - Opposition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer component will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/chrono.js"></script>
+</body>
+</html> 
